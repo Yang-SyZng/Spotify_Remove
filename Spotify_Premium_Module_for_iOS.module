@@ -2,7 +2,6 @@
 #!name=Spotify
 #!desc=解锁部分pre, 挂载t子, 打开spotify即可, 如果底部premium图标没有消失, 重新登陆即可;
 #1. 搜索界面, 歌单, 歌曲可以随意切换完全播放;  2. 音乐库已点赞歌曲随意切换完全播放;  3. 去除部分广告;
-# 再此同时也非常感谢github原作者/*@deezertidal*/大佬的分享;
 
 [MITM]
 hostname = %APPEND% spclient.wg.spotify.com
