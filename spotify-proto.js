@@ -66,17 +66,4 @@ function processMapObj(accountAttributesMapObj){
 
     delete accountAttributesMapObj['ad-use-adlogic'];
     delete accountAttributesMapObj['ad-catalogues'];
-
-    // ab test
-    // accountAttributesMapObj['ab-test-group'] = {longValue : 67};
-    // accountAttributesMapObj['ab-mobile-discover'] = {longValue : 0};
-    // accountAttributesMapObj['ab-navigation-menu'] = {longValue : 17};
-    // accountAttributesMapObj['ab-sugarpills-sanity-check'] = {stringValue : '0'};
-    // accountAttributesMapObj['ab-nft-navigation-menu'] = {stringValue : '3'};
-    // accountAttributesMapObj['ab-desktop-hide-follow'] = {boolValue : false};
-
-    // 不确定的字段
-    // accountAttributesMapObj['social-session'] = {boolValue : true};
-    // accountAttributesMapObj['head-files-url'] = {stringValue : 'https://heads-fa.scdn.co/head/{file_id}'};
-    // accountAttributesMapObj['publish-playlist'] = {boolValue : true};
 }
