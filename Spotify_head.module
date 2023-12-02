@@ -1,6 +1,6 @@
 #!url=https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/main/Spotify_head.module
 #!name=Spotify
-#!desc=使用于iOS15以上的系统，解锁部分pre, 挂载t子, 打开spotify即可, 如果底部premium图标没有消失, 重新登陆即可;
+#!desc=适用于iOS15以上的系统，解锁部分pre, 挂载t子, 打开spotify即可, 如果底部premium图标没有消失, 重新登陆即可;
 
 [MITM]
 hostname = %APPEND% spclient.wg.spotify.com
