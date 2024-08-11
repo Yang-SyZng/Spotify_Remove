@@ -1,0 +1,12 @@
+#!name=Spotify Premium
+
+#!desc=适用于iOS15以上的系统，解锁部分pre, 挂载t子, 打开spotify即可, 如果底部premium图标没有消失, 重新登陆即可;
+
+#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+
+#!url=https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/main/Spotify_qx.module
+
+
+^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ url script-response-body https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/main/spotify_function.js
+^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/ url script-request-body https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/main/spotify_main.js
+hostname = spclient.wg.spotify.com
