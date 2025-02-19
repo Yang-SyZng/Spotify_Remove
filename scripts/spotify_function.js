@@ -39,6 +39,7 @@ if(resStatus !== 200) {
     }
 }
 
+
 function processMapObj(accountAttributesMapObj){
     accountAttributesMapObj['player-license'] = {stringValue : 'premium'};
     accountAttributesMapObj['mobile'] = {boolValue : true};
