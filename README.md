@@ -3,7 +3,9 @@
 > ***本文所需要的两个链接（长按可以复制）***
 ---
 > 链接1：`https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/refs/heads/main/plugins/Spotify_head.module`
----
+
 > 链接2：`https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/lazy_group.conf`
 
 ## 模块安装方法：（需要全程配合挂梯，后面也会介绍挂梯后国内app速度变慢的解决方法）
+### 1. 点击底部“配置”页面的“模块”
+![alt text](./img/1.png)
