@@ -15,17 +15,23 @@
 
 点击底部“配置”页面的“模块”
 
-![alt text](./img/1.png)
+<div align="center">
+<img src="./img/1.png" style="zoom:52%" alt="1.png"/>
+</div>
 
 **由于Shadowrocket版本的更新，模块界面左上角的“➕”，现在无法直接从GitHub上复制raw链接下载module，因此需要手动复制下载**
 
 点击“新建模块”
 
-![alt text](./img/2.png)
+<div align="center">
+<img src="./img/2.png" style="zoom:52%" alt="2.png"/>
+</div>
 
 会显示如下界面
 
-![alt text](./img/3.png)
+<div align="center">
+<img src="./img/3.png" style="zoom:52%" alt="3.png"/>
+</div>
 
 **清除内容**
 
@@ -41,11 +47,15 @@
 打开 Safari 浏览器或者其他其他浏览器中访问
 全选复制
 
-![alt text](./img/4.png)
+<div align="center">
+<img src="./img/4.png" style="zoom:50.1%" alt="4.png"/>
+</div>
 
 复制到小火箭当中，并保存
 
-![alt text](./img/5.png)
+<div align="center">
+<img src="./img/5.png" style="zoom:60%" alt="5.png"/>
+</div>
 
 保存之后可能会自动下载模块了，并出现“成功”提示词
 
@@ -53,7 +63,9 @@
 
 反正以防万一尽量都点一下
 
-![alt text](./img/6.png)
+<div align="center">
+<img src="./img/6.png" style="zoom:23.6%" alt="6.png"/>
+</div>
 
 这样就算导入好了模块文件
 
@@ -64,7 +76,7 @@
 回到配置界面， 点击右上角的“➕”号
 
 <div align="center">
-<img src="./img/7.jpg" alt="8.png"/>
+<img src="./img/7.jpg" style="zoom:23.5%" alt="7.jpg"/>
 </div>
 
  将链接复制到此处， 一样下载
@@ -72,7 +84,7 @@
 > 链接2：`https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/lazy_group.conf`
 
 <div align="center">
-<img src="./img/8.jpg" alt="8.png"/>
+<img src="./img/8.jpg" style="zoom:23.5%" alt="8.jpg"/>
 </div>
 
 出现 lazy-group.conf 就行， 长按他-点“使用配置”，让橙色点在  lazy-group.conf 那一行就行
@@ -88,5 +100,5 @@
 点击✔旁边的“i
 
 <div align="center">
-<img src="./img/9.png" alt="9.png"/>
+<img src="./img/9.png" style="zoom:165%" alt="9.png"/>
 </div>
