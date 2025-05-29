@@ -8,6 +8,7 @@
 
 > 链接3：`https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Spotify/Spotify.list`
 
+Forked from [@app2smile](https://github.com/app2smile)
 ## 模块安装方法：
 ## ！需要提前挂好梯子的环境！
 ## ！需要提前挂好梯子的环境！
