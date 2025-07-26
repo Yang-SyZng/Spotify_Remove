@@ -47,30 +47,38 @@ Forked from [@app2smile](https://github.com/app2smile)
 
 > 链接1：`https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/refs/heads/main/plugins/Spotify_head.module`
 
-打开 Safari 浏览器或者其他其他浏览器中访问
-全选复制
+## 好像又可以直接导入了
+<div align="center">
+<img src="./img/25.jpg" style="zoom:23.5%" alt="25.jpg"/>
+</div>
+
+如果还是不行按照以下步骤
+
+~~打开 Safari 浏览器或者其他其他浏览器中访问~~
+
+~~全选复制~~
 
 <div align="center">
 <img src="./img/4.png" style="zoom:50.1%" alt="4.png"/>
 </div>
 
-复制到小火箭当中，并保存
+~~复制到小火箭当中，并保存~~
 
 <div align="center">
 <img src="./img/5.png" style="zoom:60%" alt="5.png"/>
 </div>
 
-保存之后可能会自动下载模块了，并出现“成功”提示词
+~~保存之后可能会自动下载模块了，并出现“成功”提示词~~
 
-如果出现失败等字眼，点击圆圈圈起的位置，重新下载模块
+~~如果出现失败等字眼，点击圆圈圈起的位置，重新下载模块~~
 
-反正以防万一尽量都点一下
+~~反正以防万一尽量都点一下~~
 
 <div align="center">
 <img src="./img/6.png" style="zoom:23.6%" alt="6.png"/>
 </div>
 
-这样就算导入好了模块文件
+~~这样就算导入好了模块文件~~
 
 ---
 
