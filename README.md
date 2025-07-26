@@ -49,7 +49,7 @@ Forked from [@app2smile](https://github.com/app2smile)
 
 ## 好像又可以直接导入了
 <div align="center">
-<img src="./img/25.jpg" style="zoom:23.5%" alt="25.jpg"/>
+<img src="./img/25.jpg" style="zoom:10%" alt="25.jpg"/>
 </div>
 
 如果还是不行按照以下步骤
