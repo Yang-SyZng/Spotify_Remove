@@ -1,0 +1,32 @@
+# 2026.4.26 部分解锁premium,音质不能设置为超高(建议登录后再打开脚本,重启app等待脚本生效)
+# 原项目地址 https://github.com/app2smile/rules
+# 功能: 1.去除播放广告 2.歌手/专辑列表正常展示 3.去除随机播放
+# forked from @Amlabort
+
+[Rule]
+# 屏蔽 QUIC
+DOMAIN-SUFFIX, googleusercontent.com, REJECT-QUIC
+DOMAIN, googleusercontent.com, REJECT
+
+[Rewrite]
+# 屏蔽设置界面会员信息及特定服务
+^https:\/\/(spclient\.wg|.*-spclient)\.spotify\.com(:443)?\/pendragon - reject-200
+^https:\/\/.*-spclient\.spotify\.com(:443)?\/pam-view-service\/ - reject-200
+# 屏蔽 AI DJ
+^https:\/\/.*37i9dQZF1EYkqdzj48dyYq.* - reject-200
+
+[Script]
+# 修改用户信息 Header
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-qx-header.js, tag=Spotify_Header
+# Bootstrap 与 协议处理 (需响应体)
+http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-proto-ev3.js, requires-body=true, tag=Spotify_Proto
+# Gabo Receiver 请求处理
+http-request ^https:\/\/(.*-spclient\.spotify\.com(:443)?|spclient\.wg\.spotify\.com)\/gabo-receiver-service script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-gabo.js, tag=Spotify_Gabo
+
+# 去广告脚本 (均需处理响应体)
+http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/browsita\/v.\/browse script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoSearchAd.js, requires-body=true, tag=Spotify_SearchAd
+http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/casita\/v.\/home\/default script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoHomeAd.js, requires-body=true, tag=Spotify_HomeAd
+http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/scrollsita\/v.\/scroll\/spotify script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoScrollAd.js, requires-body=true, tag=Spotify_ScrollAd
+
+[MITM]
+hostname = spclient.wg.spotify.com, *-spclient.spotify.com
