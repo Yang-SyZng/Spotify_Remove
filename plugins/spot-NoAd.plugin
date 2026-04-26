@@ -5,7 +5,7 @@
 
 [Rule]
 # 屏蔽 QUIC
-DOMAIN-SUFFIX, googleusercontent.com, REJECT-QUIC
+DOMAIN-SUFFIX, googleusercontent.com, REJECT
 DOMAIN, googleusercontent.com, REJECT
 
 [Rewrite]
@@ -16,17 +16,23 @@ DOMAIN, googleusercontent.com, REJECT
 ^https:\/\/.*37i9dQZF1EYkqdzj48dyYq.* - reject-200
 
 [Script]
-# 修改用户信息 Header
-http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-qx-header.js, tag=Spotify_Header
-# Bootstrap 与 协议处理 (需响应体)
-http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-proto-ev3.js, requires-body=true, tag=Spotify_Proto
-# Gabo Receiver 请求处理
-http-request ^https:\/\/(.*-spclient\.spotify\.com(:443)?|spclient\.wg\.spotify\.com)\/gabo-receiver-service script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-gabo.js, tag=Spotify_Gabo
+# header 修改
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-qx-header.js, requires-body=false
 
-# 去广告脚本 (均需处理响应体)
-http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/browsita\/v.\/browse script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoSearchAd.js, requires-body=true, tag=Spotify_SearchAd
-http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/casita\/v.\/home\/default script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoHomeAd.js, requires-body=true, tag=Spotify_HomeAd
-http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/scrollsita\/v.\/scroll\/spotify script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoScrollAd.js, requires-body=true, tag=Spotify_ScrollAd
+# bootstrap / customize 响应修改
+http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-proto-ev3.js, requires-body=true
+
+# gabo
+http-request ^https:\/\/(.*-spclient\.spotify\.com(:443)?|spclient\.wg\.spotify\.com)\/gabo-receiver-service script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-gabo.js, requires-body=false
+
+# 去搜索广告
+http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/browsita\/v.\/browse script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoSearchAd.js, requires-body=true
+
+# 去首页广告
+http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/casita\/v.\/home\/default script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoHomeAd.js, requires-body=true
+
+# 去滚动广告
+http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/scrollsita\/v.\/scroll\/spotify script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoScrollAd.js, requires-body=true
 
 [MITM]
 hostname = spclient.wg.spotify.com, *-spclient.spotify.com
