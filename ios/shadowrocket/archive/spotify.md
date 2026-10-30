@@ -1,6 +1,6 @@
 # Spotify · Shadowrocket
 
-[返回 plugin-hub](../../README.md)
+[返回 plugin-hub](../../../README.md)
 
 # iOS 端Spotify免费听歌办法 (教程)
 # 注：本文所有的内容均来自互联网，修修补补，搭建的过程的展示能让更多的人少走弯路，无任何盈利，纯粹是为了使用更方便
