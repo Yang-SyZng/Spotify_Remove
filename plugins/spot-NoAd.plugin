@@ -1,9 +1,13 @@
 #!name=Spotify 去广告
-#!desc=2026.10.30-r2 停用可能损坏搜索页面数据的旧广告脚本，保留 bootstrap/customize 处理。更新后重启 Spotify。
+#!desc=2026.10.30-r3 增加 Spotify Connect 入口开关和旧版创建按钮兼容选项。修改选项后重启 Spotify；新版创建按钮请在 App 内设置。
 #!openUrl=https://github.com/Yang-SyZng/Spotify_Remove
 # 原项目地址 https://github.com/app2smile/rules
 # 功能: 1.去除播放广告 2.歌手/专辑列表正常展示 3.去除随机播放
 # forked from @Amlabort
+
+[Argument]
+createButton = select,跟随App,隐藏,显示,tag=创建按钮（旧版兼容）,desc=仅处理已有的旧版导航实验；新版请在 Spotify 的内容和显示中设置创建按钮
+connectEnabled = switch,true,tag=Spotify Connect 入口,desc=控制切换播放设备的入口；不会断开已有会话或改变服务端权限；修改后重启 Spotify
 
 [Rewrite]
 # 屏蔽设置界面会员信息及特定服务
@@ -17,7 +21,7 @@
 http-request ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/main/plugins/js/spotify-customize.js, requires-body=false, timeout=10, tag=SpotifyCache
 
 # bootstrap / customize 响应修改
-http-response ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/main/plugins/js/spotify-customize.js, requires-body=true, binary-body-mode=true, timeout=10, tag=SpotifyCustomize
+http-response ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/main/plugins/js/spotify-customize.js, requires-body=true, binary-body-mode=true, argument={createButton,connectEnabled}, timeout=10, tag=SpotifyCustomize
 
 # gabo
 http-request ^https:\/\/(.*-spclient\.spotify\.com(:443)?|spclient\.wg\.spotify\.com)\/gabo-receiver-service script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-gabo.js, requires-body=false

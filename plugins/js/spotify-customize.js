@@ -4,6 +4,7 @@
 (function () {
   var result = {};
   try {
+    var options = readOptions();
     var path = $request.url.replace(/^https:\/\/[^/]+/, '').split('?')[0];
     var bootstrap = path === '/bootstrap/v1/bootstrap';
     if (bootstrap || path === '/user-customization-service/v1/customize') {
@@ -29,6 +30,21 @@
     console.log('[Spotify] Response unchanged: ' + error.message);
   }
   $done(result);
+
+  function readOptions() {
+    var args = typeof $argument === 'undefined' ? {} : $argument;
+    if (typeof args === 'string') {
+      try { args = JSON.parse(args); } catch (_) { args = {}; }
+    }
+    if (!args || typeof args !== 'object') args = {};
+    var connect = args.connectEnabled;
+    return {
+      createButton: args.createButton === '隐藏' || args.createButton === '显示' ? args.createButton : '跟随App',
+      // An older plugin without arguments must keep the server's Connect value.
+      connectEnabled: connect === true || connect === 'true' ? true :
+        connect === false || connect === 'false' ? false : null
+    };
+  }
 
   function concat(parts) {
     var size = parts.reduce(function (n, p) { return n + p.length; }, 0);
@@ -135,6 +151,9 @@
       'com.spotify.madprops.use.ucs.product.state': true,
       'com.spotify.madprops.delivered.by.ucs': true
     };
+    // This account attribute is present in the supplied 9.1.94 capture.
+    // It controls entry points, not server permissions or existing sessions.
+    if (options.connectEnabled !== null) values['allow-connect-entry-points'] = options.connectEnabled;
     var seen = Object.create(null);
     var parts = fields(bytes).map(function (field) {
       if (field.id !== 1 || field.wire !== 2) return field.raw;
@@ -179,7 +198,8 @@
       'ios-reinventfree-controllerui-impl/enable_video_time_cap_upsell',
       'ios-reinventfree-timecappivot-impl/music_video_upsell_enabled'
     ];
-    return concat(fields(bytes).map(function (field) {
+    var navigationFound = false;
+    var output = concat(fields(bytes).map(function (field) {
       if (field.id !== 3 || field.wire !== 2) return field.raw;
       var assigned = fields(field.data);
       var property = assigned.find(function (f) { return f.id === 1 && f.wire === 2; });
@@ -189,6 +209,22 @@
         if (f.wire === 2 && f.id === 1) scope = text(f.data);
         if (f.wire === 2 && f.id === 2) name = text(f.data);
       });
+      if (scope === 'ios-feature-navigation' && name === 'tab_configuration') {
+        navigationFound = true;
+        // Never inject this retired experiment into a new app configuration.
+        // The 9.1.94 capture omits it; modern clients have a device-local setting.
+        if (options.createButton === '隐藏') return new Uint8Array(0);
+        if (options.createButton === '显示') {
+          var previousEnum = assigned.find(function (f) { return f.id === 5 && f.wire === 2; });
+          var enumFields = previousEnum ? fields(previousEnum.data).filter(function (f) {
+            return f.id !== 1;
+          }).map(function (f) { return f.raw; }) : [];
+          var preserved = assigned.filter(function (f) { return f.id < 3 || f.id > 5; });
+          return message(3, concat(preserved.map(function (f) { return f.raw; }).concat([
+            message(5, concat(enumFields.concat([message(1, ascii('CreateRight'))])))
+          ])));
+        }
+      }
       if (disabled.indexOf(scope + '/' + name) === -1) return field.raw;
       // AssignedValue oneof: BoolValue=3, IntValue=4, EnumValue=5.
       var oldBool = assigned.find(function (f) { return f.id === 3 && f.wire === 2; });
@@ -200,5 +236,9 @@
         message(3, concat(boolFields.concat([new Uint8Array([8, 0])])))
       ])));
     }));
+    if (!navigationFound && options.createButton !== '跟随App') {
+      console.log('[Spotify] Create button: legacy navigation flag absent; use the in-app Content and display setting');
+    }
+    return output;
   }
 })();
