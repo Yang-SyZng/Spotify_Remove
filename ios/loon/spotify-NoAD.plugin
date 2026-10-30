@@ -1,10 +1,10 @@
 #!name = spotify-NoAD
-#!desc = 2026.10.30-r8 脚本由本仓库维护，gabo 本地响应。支持 Spotify Connect 入口和旧版创建按钮选项；修改后重启 Spotify。
+#!desc = 用于 Spotify 客户端去广告和推广入口精简，支持 Spotify Connect 入口及旧版创建按钮选项。
 #!author = 🐇Gardenia.💙[https://github.com/Yang-SyZng]
 #!homepage = https://apps.apple.com/app/id324684580
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8b/f2/6a/8bf26ab9-3ced-cb5c-a2b3-19f65e7f5cc6/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/512x512bb.jpg
 #!loon_version = 3.5.1(983)
-#!date = 2026-10-30
+#!date = 2026.10.30-r8
 
 [Argument]
 createButton = select,跟随App,隐藏,显示,tag=创建按钮（旧版兼容）,desc=仅处理已有的旧版导航实验；新版请在 Spotify 的内容和显示中设置创建按钮

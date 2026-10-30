@@ -4,7 +4,7 @@
 
 | 插件 | 最近更新版本 | 说明 | 下载地址 |
 | --- | --- | --- | --- |
-| [spotify-NoAD](spotify-NoAD.module) | 2026.10.30-r7 | Spotify 客户端去广告模块 | [下载模块](https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/shadowrocket/spotify-NoAD.module) |
+| [spotify-NoAD](spotify-NoAD.module) | [2026.10.30-r7](version-logs/spotify-NoAD.md) | Spotify 客户端去广告模块 | [下载模块](https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/shadowrocket/spotify-NoAD.module) |
 
 # 配置
 
