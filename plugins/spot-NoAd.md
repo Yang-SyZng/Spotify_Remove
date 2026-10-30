@@ -18,7 +18,17 @@ https://raw.githubusercontent.com/Yang-SyZng/Spotify_Remove/main/plugins/spot-No
 
 结构参考： https://github.com/app2smile/rules/blob/master/js/spotify-proto.js
 
-原有 gabo、搜索、首页和滚动广告脚本仍使用其原地址，本次没有验证这些第三方脚本的实际效果。
+gabo 脚本仍使用原地址。
+
+## 2026-10-30-r2 搜索兼容性修复
+
+收到更新后搜索页显示“出错了，再试一次”的反馈后，停用了旧的搜索、首页及滚动广告响应脚本，页面内容现在原样返回；bootstrap/customize 的去 pre 处理保留。
+
+旧搜索脚本未启用二进制模式，却将取得的响应体通过 `$done({body})` 回写；它还扫描前 666 字节，把碰巧符合条件的位置当作广告字段。使用已提供的首页 Protobuf 响应验证文本回写路径时，89,899 字节变成了 92,121 字节；构造嵌套字段也复现了扫描误改。首页和滚动脚本采用类似字节扫描，还会写入 Protobuf 不支持的 wire type 7，不能仅靠打开二进制模式解决。
+
+更新插件后，确认旧的 `spot-NoSearchAd.js`、`spot-NoHomeAd.js`、`spot-NoScrollAd.js` 三条响应规则已移除，然后完全退出并重启 Spotify。该调整可能使页面推广卡片重新出现。
+
+原 HAR 没有 browsita 或搜索失败请求，尚不能据此确认手机上此次报错的唯一原因。如果更新后仍然报错，需要重新抓取从打开搜索页到出现错误的过程，以检查实际失败接口。
 
 ## 验证与限制
 

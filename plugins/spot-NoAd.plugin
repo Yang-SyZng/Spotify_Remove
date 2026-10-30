@@ -1,5 +1,5 @@
 #!name=Spotify 去广告
-#!desc=2026.10.30 修复 bootstrap/customize 二进制响应处理，保留原始客户端配置。更新后重启 Spotify；不保证服务端 Premium 权益。
+#!desc=2026.10.30-r2 停用可能损坏搜索页面数据的旧广告脚本，保留 bootstrap/customize 处理。更新后重启 Spotify。
 #!openUrl=https://github.com/Yang-SyZng/Spotify_Remove
 # 原项目地址 https://github.com/app2smile/rules
 # 功能: 1.去除播放广告 2.歌手/专辑列表正常展示 3.去除随机播放
@@ -22,14 +22,8 @@ http-response ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?
 # gabo
 http-request ^https:\/\/(.*-spclient\.spotify\.com(:443)?|spclient\.wg\.spotify\.com)\/gabo-receiver-service script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-gabo.js, requires-body=false
 
-# 去搜索广告
-http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/browsita\/v.\/browse script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoSearchAd.js, requires-body=true
-
-# 去首页广告
-http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/casita\/v.\/home\/default script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoHomeAd.js, requires-body=true
-
-# 去滚动广告
-http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/scrollsita\/v.\/scroll\/spotify script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-NoScrollAd.js, requires-body=true
+# 搜索、首页、滚动页面原样返回。
+# 旧广告脚本会回写文本或扫描任意字节修改 protobuf，可能导致页面“出错了”。
 
 [MITM]
 hostname = spclient.wg.spotify.com, *-spclient.spotify.com

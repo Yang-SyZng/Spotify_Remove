@@ -128,3 +128,22 @@ test('plugin routes both endpoints, ports and queries with binary response mode'
     assert(line.includes('Yang-SyZng/Spotify_Remove/main/plugins/js/spotify-customize.js'));
   }
 });
+
+test('search, browse, home and scroll responses bypass response scripts', () => {
+  const plugin = fs.readFileSync(path.join(__dirname, '../plugins/spot-NoAd.plugin'), 'utf8');
+  const handlers = plugin.split(/\r?\n/).filter(line => line.startsWith('http-response '))
+    .map(line => new RegExp(line.split(' ')[1]));
+  const endpoints = [
+    '/browsita/v1/browse', '/browsita/v2/browse?locale=zh-TW',
+    '/search/v1/search?q=test', '/searchview/km/v4/search/test',
+    '/casita/v1/home/default', '/scrollsita/v1/scroll/spotify'
+  ];
+  for (const host of ['spclient.wg.spotify.com', 'gae2-spclient.spotify.com:443']) {
+    for (const endpoint of endpoints) {
+      const pageUrl = `https://${host}${endpoint}`;
+      assert(!handlers.some(pattern => pattern.test(pageUrl)), pageUrl);
+      const result = run({ url: pageUrl }, { status: 200, body: Buffer.from([10, 3, 50, 225, 93]) });
+      assert.equal(Object.keys(result).length, 0, 'core handler must leave page responses untouched');
+    }
+  }
+});
