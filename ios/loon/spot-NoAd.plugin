@@ -1,5 +1,5 @@
 #!name = Spotify 去广告
-#!desc = 2026.10.30-r5 增加 Spotify Connect 入口开关和旧版创建按钮兼容选项。修改选项后重启 Spotify；新版创建按钮请在 App 内设置。
+#!desc = 2026.10.30-r6 增加 Spotify Connect 入口开关和旧版创建按钮兼容选项。修改选项后重启 Spotify；新版创建按钮请在 App 内设置。
 #!author = 🐇Gardenia.💙[https://github.com/Yang-SyZng]
 #!homepage = https://apps.apple.com/app/id324684580
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8b/f2/6a/8bf26ab9-3ced-cb5c-a2b3-19f65e7f5cc6/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/512x512bb.jpg
@@ -18,10 +18,10 @@ connectEnabled = switch,true,tag=Spotify Connect 入口,desc=控制切换播放�
 
 [Script]
 # 删除条件缓存请求头（不区分大小写），避免 304 响应跳过脚本
-http-request ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/loon/js/spotify-customize.js, requires-body=false, timeout=10, tag=SpotifyCache
+http-request ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-customize.js, requires-body=false, timeout=10, tag=SpotifyCache
 
 # bootstrap / customize 响应修改
-http-response ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/loon/js/spotify-customize.js, requires-body=true, binary-body-mode=true, argument={createButton,connectEnabled}, timeout=10, tag=SpotifyCustomize
+http-response ^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-customize.js, requires-body=true, binary-body-mode=true, argument={createButton,connectEnabled}, timeout=10, tag=SpotifyCustomize
 
 # gabo
 http-request ^https:\/\/(.*-spclient\.spotify\.com(:443)?|spclient\.wg\.spotify\.com)\/gabo-receiver-service script-path=https://raw.githubusercontent.com/Amlabort/MY_clash/refs/heads/main/files/lpx/js/spot-gabo.js, requires-body=false
