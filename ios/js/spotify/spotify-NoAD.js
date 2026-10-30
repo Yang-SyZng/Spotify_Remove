@@ -1,27 +1,45 @@
-// Spotify bootstrap/customize response handler for Loon.
+// spotify-NoAD: repository-maintained handler for Loon, Shadowrocket and Quantumult X.
 // Wire layout follows app2smile/rules/js/spotify-proto.js.
 // Keep unrelated fields (including unknown protobuf fields) byte-for-byte.
+// Quantumult X APIs: crossutility/Quantumult-X sample-bytes-rewrite.js and sample-echo-response.js.
 (function () {
   var result = {};
   try {
+    var quantumult = typeof $task !== 'undefined';
     var options = readOptions();
+    // Match Spotify hosts and endpoint boundaries before intercepting any request.
+    if (!/^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\//i.test($request.url)) {
+      $done({});
+      return;
+    }
     var path = $request.url.replace(/^https:\/\/[^/]+/, '').split('?')[0];
     var bootstrap = path === '/bootstrap/v1/bootstrap';
-    if (bootstrap || path === '/user-customization-service/v1/customize') {
+    var requestPhase = typeof $response === 'undefined';
+    if (requestPhase && /^\/gabo-receiver-service(?:\/|$)/.test(path)) {
+      // Acknowledge locally. No borrowed code, network fetch, or fabricated proxy headers.
+      var reply = { status: quantumult ? 'HTTP/1.1 200 OK' : 200,
+        headers: { 'Cache-Control': 'no-store' }, body: '' };
+      result = quantumult ? reply : { response: reply };
+    } else if (requestPhase && /^\/(?:artistview\/v1\/artist|album-entity-view\/v2\/album)\//.test(path)) {
+      // Preserve every other query parameter, including duplicate platform values.
+      var url = $request.url.replace(/([?&]platform=)iphone(?=&|$)/g, '$1ipad');
+      if (url !== $request.url) result = { url: url };
+    } else if (bootstrap || path === '/user-customization-service/v1/customize') {
       if (typeof $response === 'undefined') {
         var headers = Object.assign({}, $request.headers);
         Object.keys(headers).forEach(function (key) {
           if (/^(if-none-match|if-modified-since)$/i.test(key)) delete headers[key];
         });
         result = { headers: headers };
-      } else if (String($response.status || $response.statusCode) === '200' &&
-                 $request.method.toUpperCase() === 'POST') {
-        var body = $response.body;
+      } else if (/^(?:200|HTTP\/\S+ 200(?: .*)?)$/.test(String($response.status || $response.statusCode)) &&
+                 String($request.method).toUpperCase() === 'POST') {
+        var body = quantumult ? $response.bodyBytes : $response.body;
         if (body instanceof ArrayBuffer) body = new Uint8Array(body);
+        if (quantumult && Array.isArray(body)) body = new Uint8Array(body);
         if (!(body instanceof Uint8Array)) throw new Error('Enable binary-body-mode=true');
         // BootstrapResponse.ucsResponseV0.success.customization is a UCS wrapper.
         var output = bootstrap ? atPath(body, [2, 1, 1], patchWrapper) : patchWrapper(body);
-        result = { body: output };
+        result = quantumult ? { bodyBytes: output.buffer.slice(output.byteOffset, output.byteOffset + output.byteLength) } : { body: output };
         console.log('[Spotify] ' + (bootstrap ? 'bootstrap' : 'customize') + ' patched');
       }
     }

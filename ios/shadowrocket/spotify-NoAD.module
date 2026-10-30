@@ -1,0 +1,13 @@
+#!url=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/shadowrocket/spotify-NoAD.module
+#!name=spotify-NoAD
+#!desc=2026.10.30-r7 Spotify 客户端去广告配置，全部脚本由本仓库维护。更新后重启 Spotify。
+#!author=🐇Gardenia.💙
+
+[Script]
+spotify-NoAD-cache = type=http-request,pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$,requires-body=0,script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js
+spotify-NoAD-response = type=http-response,pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js
+spotify-NoAD-platform = type=http-request,pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js
+spotify-NoAD-gabo = type=http-request,pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/gabo-receiver-service(?:\/|\?|$),requires-body=0,script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js
+
+[MITM]
+hostname = %APPEND% spclient.wg.spotify.com, *-spclient.spotify.com

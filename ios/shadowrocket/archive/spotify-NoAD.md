@@ -6,7 +6,7 @@
 # 注：本文所有的内容均来自互联网，修修补补，搭建的过程的展示能让更多的人少走弯路，无任何盈利，纯粹是为了使用更方便
 > ***本文所需要的两个链接（长按可以复制）***
 ---
-> 链接1：`https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/shadowrocket/Spotify_head.module`
+> 链接1：`https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/shadowrocket/spotify-NoAD.module`
 
 > 链接2：`https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/lazy_group.conf`
 
@@ -49,7 +49,7 @@ Forked from [@app2smile](https://github.com/app2smile)
 ---
 ### 2. 导入去Pre模块
 
-> 链接1：`https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/shadowrocket/Spotify_head.module`
+> 链接1：`https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/shadowrocket/spotify-NoAD.module`
 
 ## 好像又可以直接导入了
 <div align="center">

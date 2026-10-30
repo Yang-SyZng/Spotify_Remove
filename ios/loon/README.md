@@ -4,13 +4,17 @@
 
 | 插件 | 说明 | 配置文件 | 下载地址 |
 | --- | --- | --- | --- |
-| Spotify 去广告 | 客户端去广告配置、Spotify Connect 入口开关及旧版创建按钮兼容选项 | [spot-NoAd.plugin](spot-NoAd.plugin) | [下载插件](https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/loon/spot-NoAd.plugin) |
+| spotify-NoAD | 客户端去广告配置、Spotify Connect 入口开关及旧版创建按钮兼容选项 | [spotify-NoAD.plugin](spotify-NoAD.plugin) | [下载插件](https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/loon/spotify-NoAD.plugin) |
 
 ## 安装与更新
 
 在 Loon「配置 → 插件」中添加上表中的下载地址。确认脚本下载完成，开启 HTTPS 解密并信任证书，然后完全退出并重新打开 Spotify。
 
-Spotify 脚本：[ios/js/spotify/spotify-customize.js](../js/spotify/spotify-customize.js)。
+Spotify 脚本：[ios/js/spotify/spotify-NoAD.js](../js/spotify/spotify-NoAD.js)。
+
+脚本由本仓库维护，gabo 请求在本地返回空响应。旧订阅需换成上表的新地址；停用旧插件，避免重复处理。
+
+更新记录：[spotify-NoAD](version-logs/spotify-NoAD.md)。
 
 ## Spotify 选项
 
