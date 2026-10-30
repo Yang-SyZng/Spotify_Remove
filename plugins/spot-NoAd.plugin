@@ -1,6 +1,8 @@
 #!name=Spotify 去广告
 #!desc=2026.10.30-r3 增加 Spotify Connect 入口开关和旧版创建按钮兼容选项。修改选项后重启 Spotify；新版创建按钮请在 App 内设置。
 #!openUrl=https://github.com/Yang-SyZng/Spotify_Remove
+#!author=🐇Gardenia.💙[https://github.com/Yang-SyZng]
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8b/f2/6a/8bf26ab9-3ced-cb5c-a2b3-19f65e7f5cc6/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/512x512bb.jpg
 
 [Argument]
 createButton = select,跟随App,隐藏,显示,tag=创建按钮（旧版兼容）,desc=仅处理已有的旧版导航实验；新版请在 Spotify 的内容和显示中设置创建按钮
