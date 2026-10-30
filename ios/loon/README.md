@@ -2,25 +2,12 @@
 
 [返回 plugin-hub](../../README.md)
 
-| 插件 | 说明 | 配置文件 | 下载地址 |
+| 插件 | 最近更新版本 | 说明 | 下载地址 |
 | --- | --- | --- | --- |
-| spotify-NoAD | 客户端去广告配置、Spotify Connect 入口开关及旧版创建按钮兼容选项 | [spotify-NoAD.plugin](spotify-NoAD.plugin) | [下载插件](https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/loon/spotify-NoAD.plugin) |
+| [spotify-NoAD](spotify-NoAD.plugin) | [2026.10.30-r7](version-logs/spotify-NoAD.md) | Spotify 客户端去广告配置 | [下载插件](https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/loon/spotify-NoAD.plugin) |
 
-## 安装与更新
+# 配置
 
-在 Loon「配置 → 插件」中添加上表中的下载地址。确认脚本下载完成，开启 HTTPS 解密并信任证书，然后完全退出并重新打开 Spotify。
+确保开启 MitM、复写和 JavaScript 脚本功能，安装并信任 MitM 证书，启用插件并确认脚本下载完成。
 
-Spotify 脚本：[ios/js/spotify/spotify-NoAD.js](../js/spotify/spotify-NoAD.js)。
-
-脚本由本仓库维护，gabo 请求在本地返回空响应。旧订阅需换成上表的新地址；停用旧插件，避免重复处理。
-
-更新记录：[spotify-NoAD](version-logs/spotify-NoAD.md)。
-
-## Spotify 选项
-
-| 选项 | 默认值 | 作用 |
-| --- | --- | --- |
-| 创建按钮（旧版兼容） | 跟随 App | 仅处理已有的旧版导航实验；新版请到 Spotify「设置和隐私 → 内容和显示」设置创建按钮 |
-| Spotify Connect 入口 | 开启 | 控制切换播放设备的入口；不会断开已有会话或改变服务端权限 |
-
-修改选项后需完全退出并重新打开 Spotify。客户端属性修改不代表服务端订阅状态改变。
+具体步骤：[功能开启教程](开启教程.md)。

@@ -1,5 +1,14 @@
 # spotify-NoAD.plugin
 
+## Spotify 选项
+
+| 选项 | 默认值 | 作用 |
+| --- | --- | --- |
+| 创建按钮（旧版兼容） | 跟随 App | 仅处理已有的旧版导航实验；新版请到 Spotify「设置和隐私 → 内容和显示」设置创建按钮 |
+| Spotify Connect 入口 | 开启 | 控制切换播放设备的入口；不会断开已有会话或改变服务端权限 |
+
+修改选项后需完全退出并重新打开 Spotify。客户端属性修改不代表服务端订阅状态改变。
+
 此文件使用 Loon 的 `.plugin` 配置格式。Shadowrocket 的 `.module` 文件和 Quantumult X 的配置是仓库中的其他文件，本次更新仅针对 `spotify-NoAD.plugin`。
 
 导入/更新地址：
