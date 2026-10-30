@@ -1,5 +1,7 @@
 # spotify-NoAD.plugin
 
+简体中文 | [English](spotify-NoAD.en.md)
+
 ## Spotify 选项
 
 | 选项 | 默认值 | 作用 |
@@ -16,6 +18,12 @@
 https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/loon/spotify-NoAD.plugin
 
 更新插件后，确认 `SpotifyCache` 与 `SpotifyCustomize` 两个脚本已下载，开启 HTTPS 解密并信任证书，然后完全退出并重新打开 Spotify。避免同时启用多个处理 bootstrap/customize 的插件，以免响应被反复覆盖。
+
+## 2026.10.30-r9 中英文版本
+
+- 文档和客户端配置提供独立的中文、英文版本，各级文档加入语言切换和英文索引。
+- 英文配置使用 `spotify-NoAD.en.plugin`，英文导入链接指向对应配置。
+- JS 和配图由两版共用。中文显示名改为 `spotify去广告`，英文为 `Spotify Ad Blocker`；英文选项由共用脚本映射到相同的功能。
 
 ## 2026.10.30-r8 新版 Script 配置语法
 

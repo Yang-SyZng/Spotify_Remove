@@ -1,0 +1,34 @@
+#!name = Spotify Ad Blocker
+#!desc = Blocks ads and reduces promotional entry points in the Spotify client. Includes Spotify Connect entry-point and legacy Create-button options.
+#!author = 🐇Gardenia.💙[https://github.com/Yang-SyZng]
+#!homepage = https://apps.apple.com/app/id324684580
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/24/11/da/2411dab1-6839-e069-6f2c-fba3f9daef75/Placeholder.mill/1000x1000Icon.ApSiOS01-75.webp
+#!loon_version = 3.5.1(983)
+#!date = 2026.10.30-r9
+
+[Argument]
+createButton = select,"Follow App","Hide","Show",tag=Create button (legacy),desc=Only affects existing legacy navigation experiments; use Content and display in newer Spotify versions
+connectEnabled = switch,true,tag=Spotify Connect entry points,desc=Controls the device-switching entry points; does not end sessions or change server permissions; restart Spotify after changes
+
+[Rewrite]
+# Block membership information in Settings and selected services
+^https:\/\/(spclient\.wg|.*-spclient)\.spotify\.com(:443)?\/pendragon - reject-200
+^https:\/\/.*-spclient\.spotify\.com(:443)?\/pam-view-service\/ - reject-200
+# Block AI DJ
+^https:\/\/.*37i9dQZF1EYkqdzj48dyYq.* - reject-200
+
+[Script]
+# Remove conditional cache headers case-insensitively to avoid a 304 response
+request if ${url} ~= /^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$/ then script("https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js") with requires_body=false, timeout=10, tag="SpotifyCache"
+
+# Patch bootstrap / customize responses
+response if ${url} ~= /^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$/ then script("https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js", {${createButton}, ${connectEnabled}}) with requires_body=true, binary_body_mode=true, timeout=10, tag="SpotifyCustomize"
+
+# Return an empty local response for gabo requests
+request if ${url} ~= /^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/gabo-receiver-service(?:\/|\?|$)/ then script("https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js") with requires_body=false, timeout=10, tag="SpotifyGabo"
+
+# Leave Search, Home, and scrolling-page responses unchanged.
+# Older scripts could corrupt protobuf data by rewriting it as text or scanning arbitrary bytes.
+
+[MITM]
+hostname = spclient.wg.spotify.com, *-spclient.spotify.com

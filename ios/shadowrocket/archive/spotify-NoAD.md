@@ -1,6 +1,10 @@
 # Spotify · Shadowrocket
 
+简体中文 | [English](spotify-NoAD.en.md)
+
 [返回 plugin-hub](../../../README.md)
+
+本文为归档教程，当前配置步骤请查看[Shadowrocket 配置](../配置.md)。中英文两版共用原始中文截图。
 
 # iOS 端Spotify免费听歌办法 (教程)
 # 注：本文所有的内容均来自互联网，修修补补，搭建的过程的展示能让更多的人少走弯路，无任何盈利，纯粹是为了使用更方便

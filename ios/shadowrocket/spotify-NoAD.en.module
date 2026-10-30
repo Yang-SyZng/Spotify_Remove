@@ -1,0 +1,14 @@
+#!url=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/shadowrocket/spotify-NoAD.en.module
+#!name = Spotify Ad Blocker
+#!desc = Blocks ads and reduces promotional entry points in the Spotify client.
+#!date = 2026.10.30-r8
+#!author=🐇Gardenia.💙
+
+[Script]
+spotify-NoAD-cache = type=http-request,pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$,requires-body=0,script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js
+spotify-NoAD-response = type=http-response,pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(?:\?.*)?$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js
+spotify-NoAD-platform = type=http-request,pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/(?:artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js
+spotify-NoAD-gabo = type=http-request,pattern=^https:\/\/(?:spclient\.wg|[\w-]+-spclient)\.spotify\.com(?::443)?\/gabo-receiver-service(?:\/|\?|$),requires-body=0,script-path=https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/js/spotify/spotify-NoAD.js
+
+[MITM]
+hostname = %APPEND% spclient.wg.spotify.com, *-spclient.spotify.com

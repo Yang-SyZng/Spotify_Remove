@@ -1,10 +1,10 @@
-#!name = spotify-NoAD
+#!name = spotify去广告
 #!desc = 用于 Spotify 客户端去广告和推广入口精简，支持 Spotify Connect 入口及旧版创建按钮选项。
 #!author = 🐇Gardenia.💙[https://github.com/Yang-SyZng]
 #!homepage = https://apps.apple.com/app/id324684580
-#!icon = https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/24/11/da/2411dab1-6839-e069-6f2c-fba3f9daef75/Placeholder.mill/400x400Icon.ApSiOS01-75.webp
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/24/11/da/2411dab1-6839-e069-6f2c-fba3f9daef75/Placeholder.mill/1000x1000Icon.ApSiOS01-75.webp
 #!loon_version = 3.5.1(983)
-#!date = 2026.10.30-r8
+#!date = 2026.10.30-r9
 
 [Argument]
 createButton = select,跟随App,隐藏,显示,tag=创建按钮（旧版兼容）,desc=仅处理已有的旧版导航实验；新版请在 Spotify 的内容和显示中设置创建按钮

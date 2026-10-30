@@ -56,8 +56,12 @@
     }
     if (!args || typeof args !== 'object') args = {};
     var connect = args.connectEnabled;
+    // Both localized Loon plugins share this handler and the same option keys.
+    var createButton = args.createButton;
+    if (createButton === 'Hide') createButton = '隐藏';
+    if (createButton === 'Show') createButton = '显示';
     return {
-      createButton: args.createButton === '隐藏' || args.createButton === '显示' ? args.createButton : '跟随App',
+      createButton: createButton === '隐藏' || createButton === '显示' ? createButton : '跟随App',
       // An older plugin without arguments must keep the server's Connect value.
       connectEnabled: connect === true || connect === 'true' ? true :
         connect === false || connect === 'false' ? false : null

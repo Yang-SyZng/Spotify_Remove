@@ -1,10 +1,12 @@
 # Quantumult X 插件聚合列表
 
+简体中文 | [English](README.en.md)
+
 [返回 plugin-hub](../../README.md)
 
 | 插件 | 最近更新版本 | 说明 | 下载地址 |
 | --- | --- | --- | --- |
-| [spotify-NoAD](spotify-NoAD.conf) | [2026.10.30-r7](version-logs/spotify-NoAD.md) | Spotify 客户端去广告重写配置 | [一键导入](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FYang-SyZng%2Fplugin-hub%2Fmain%2Fios%2Fquantumult_x%2Fspotify-NoAD.conf%2C%20tag%3Dspotify-NoAD%22%5D%7D) |
+| [spotify-NoAD](spotify-NoAD.conf) | [2026.10.30-r8](version-logs/spotify-NoAD.md) | Spotify 客户端去广告重写配置 | [一键导入](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FYang-SyZng%2Fplugin-hub%2Fmain%2Fios%2Fquantumult_x%2Fspotify-NoAD.conf%2C%20tag%3Dspotify-NoAD%22%5D%7D) |
 
 # 配置
 

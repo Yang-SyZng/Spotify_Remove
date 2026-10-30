@@ -1,5 +1,13 @@
 # spotify-NoAD.module
 
+简体中文 | [English](spotify-NoAD.en.md)
+
+## 2026.10.30-r8 中英文版本
+
+- 文档和客户端配置提供独立的中文、英文版本，各级文档加入语言切换和英文索引。
+- 英文配置使用 `spotify-NoAD.en.module`，英文导入链接指向对应配置。
+- JS 和配图由两版共用。
+
 ## 2026.10.30-r7 统一命名与脚本维护
 
 - 配置统一命名为 `spotify-NoAD.module`，下载地址同步更新。

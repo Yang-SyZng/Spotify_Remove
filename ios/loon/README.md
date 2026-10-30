@@ -1,10 +1,12 @@
 # Loon 插件聚合列表
 
+简体中文 | [English](README.en.md)
+
 [返回 plugin-hub](../../README.md)
 
 | 插件 | 最近更新版本 | 说明 | 下载地址 |
 | --- | --- | --- | --- |
-| [spotify-NoAD](spotify-NoAD.plugin) | [2026.10.30-r8](version-logs/spotify-NoAD.md) | Spotify 客户端去广告配置 | [一键导入](https://www.nsloon.com/openloon/import?plugin=https%3A%2F%2Fraw.githubusercontent.com%2FYang-SyZng%2Fplugin-hub%2Fmain%2Fios%2Floon%2Fspotify-NoAD.plugin) |
+| [spotify-NoAD](spotify-NoAD.plugin) | [2026.10.30-r9](version-logs/spotify-NoAD.md) | Spotify 客户端去广告配置 | [一键导入](https://www.nsloon.com/openloon/import?plugin=https%3A%2F%2Fraw.githubusercontent.com%2FYang-SyZng%2Fplugin-hub%2Fmain%2Fios%2Floon%2Fspotify-NoAD.plugin) |
 
 # 配置
 

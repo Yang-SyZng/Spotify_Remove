@@ -1,6 +1,8 @@
 # plugin-hub
 
-按平台与客户端整理的插件汇聚中心。
+简体中文 | [English](README.en.md)
+
+代理客户端规则与插件汇聚中心。
 
 作者：[@🐇Gardenia.💙](https://github.com/Yang-SyZng)
 
