@@ -17,6 +17,14 @@ https://raw.githubusercontent.com/Yang-SyZng/plugin-hub/main/ios/loon/spotify-No
 
 更新插件后，确认 `SpotifyCache` 与 `SpotifyCustomize` 两个脚本已下载，开启 HTTPS 解密并信任证书，然后完全退出并重新打开 Spotify。避免同时启用多个处理 bootstrap/customize 的插件，以免响应被反复覆盖。
 
+## 2026-10-30-r8 新版 Script 配置语法
+
+- Loon 的三条 Script 指令迁移为 `request/response if ... then script(...) with ...`。
+- Body 选项改为 `requires_body` 与 `binary_body_mode`；插件参数通过 `{${createButton}, ${connectEnabled}}` 作为对象传入。
+- 声明最低 Loon 版本为 `3.5.1(983)`，URL 匹配范围、二进制处理和功能选项保持原有行为。
+- 此次迁移仅涉及 Loon Script 配置；共用 JavaScript、Quantumult X 和 Shadowrocket 配置继续使用各自已有接口与格式。
+- 迁移依据：[Loon 新版 Script 文档](https://nsloon.app/docs/Script/script_v2/)。实机导入与运行效果待验证。
+
 ## 2026-10-30 修复
 
 - 为 bootstrap/customize 开启 `binary-body-mode=true`，支持地区域名、显式 443 端口和查询参数。
